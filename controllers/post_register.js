@@ -1,5 +1,5 @@
 import UserModel from "../Models/User.js"
-import CryptoJS from "crypto-js";
+import bcrypt from "bcrypt"
 
 export default async function PostRegisterController(req, res) {
 
@@ -20,7 +20,7 @@ export default async function PostRegisterController(req, res) {
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     email: req.body.email,
-                    password: CryptoJS.SHA1(req.body.password).toString()
+                    password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
                 })
                 req.session.flash = { type :'success', message:`Compte créer avec succès !`}
                 res.redirect("/login");

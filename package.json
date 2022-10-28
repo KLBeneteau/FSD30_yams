@@ -14,8 +14,8 @@
     "nodemon": "^2.0.16"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "connect-mongo": "^4.6.0",
-    "crypto-js": "^4.1.1",
     "express": "^4.17.1",
     "express-session": "^1.17.3",
     "mogoose": "^0.0.1-security",

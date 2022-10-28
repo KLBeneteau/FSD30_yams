@@ -1,19 +1,23 @@
 import UserModel from "../Models/User.js"
-import CryptoJS from "crypto-js";
+import bcrypt from "bcrypt"
 
 export default async function PostLoginController(req, res) {
 
     try {
         const user = await UserModel.findOne({
-            email: req.body.email,
-            password: CryptoJS.SHA1(req.body.password).toString()
+            email: req.body.email
         })
-        req.session.user = {
-            ...user,
-            password : null
+        if(!bcrypt.compareSync(req.body.password, user.password)){
+            req.session.flash = { type :'error', message:`Mot de passe inccorect`}
+            res.redirect("/login");
+        } else {
+            req.session.user = {
+                ...user,
+                password : null
+            }
+            req.session.flash = null
+            res.redirect("/");
         }
-        req.session.flash = null
-        res.redirect("/");
     }
     catch (err) {
         req.session.flash = { type :'error', message:`Identifiants incorect`}
