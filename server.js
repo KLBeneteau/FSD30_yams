@@ -13,7 +13,7 @@ import router from "./routes/router.js";
 // ==========
 
 dotenv.config();
-const { APP_HOSTNAME, APP_PORT, NODE_ENV, MONGO_PORT } = process.env;
+const { APP_HOSTNAME, APP_PORT, NODE_ENV, MONGO_PORT, SECRET } = process.env;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }))
 app.use(session({
   name: "simple",
-  secret: "simple",
+  secret: SECRET,
   resave: true,
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl:`mongodb://${APP_HOSTNAME}:${MONGO_PORT}/counter` }),
