@@ -1,0 +1,25 @@
+doctype html
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title UserApp
+        block styles
+            link(rel="stylesheet", href="/css/styles.css")
+    body
+        header 
+            nav.navBar
+                if user 
+                    a(href='/') Home
+                    a(href='/logout') Logout
+                else
+                    a(href='/login') Login
+                    a(href='/login/register') Register
+    
+        block content
+
+        if flash
+            p(class=flash.type).flash #{flash.message}
+
+        footer

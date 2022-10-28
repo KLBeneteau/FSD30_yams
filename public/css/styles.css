@@ -1,0 +1,88 @@
+html {font-family: sans-serif;}
+body { margin: 0;}
+
+.flash{ text-align: center;}
+.error { color : red }
+.success { color : rgb(53, 207, 53)}
+.vertClair { color : #1A7845 }
+.hidden{ visibility: hidden;}
+
+.top3 {
+    margin-top: 3em;
+}
+
+.navBar {
+    background-color: #40D785;
+    color : #1A7845 ;
+    display: flex;
+    align-items: center;
+}
+
+.navBar a {
+    padding: 0.8em;
+    text-decoration: none;
+    font-weight: bold;
+    border-right: solid 1px #1A7845;
+}
+
+.navBar a:last-child {
+    border-radius: 5px;
+}
+
+.navBar a:visited {
+    color:#1A7845
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.flux {
+    width: 90%;
+    max-width: 500px;
+    background-color: #40D7854D;
+    border-radius: 15px;
+}
+
+.form-input {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 0.5em;
+    margin: 0.8em 1.5em;
+    display: flex;
+    align-items: center;
+}
+.form-input img{
+    margin-right: 0.2em;
+}
+.form-input input {
+    height: 100%;
+    width: -webkit-fill-available;
+    background: transparent;
+    border: none;
+    font-size: large;
+}
+
+.form button {
+    margin: auto;
+    margin-top: 1.5em;
+    background-color: #F9E580;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 5px 5px #00000033;
+    transition-duration: 0.5s;
+}
+
+.form button:hover {
+    background-color: #F9E580B3;
+}
