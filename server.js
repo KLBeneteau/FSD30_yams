@@ -27,17 +27,23 @@ app.locals.pretty = (NODE_ENV !== 'production'); // Indente correctement le HTML
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }))
+app.use(session({
+  name: "simple",
+  secret: "simple",
+  resave: false,
+  saveUninitialized: true,
+}));
+app.use((req, res, next) => {
+  app.locals.flash = req.session.flash;
+  app.locals.user = req.session.user;
+  app.locals.imgPath = `http://${APP_HOSTNAME}:${APP_PORT}/image`
+  next();
+});
 
 // ==========
 // App routers
 // ==========
 
-app.use(session({
-    name: "simple",
-    secret: "simple",
-    resave: false,
-    saveUninitialized: true,
-}));
 
 app.use(router);
 

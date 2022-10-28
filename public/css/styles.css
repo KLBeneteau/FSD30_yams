@@ -1,5 +1,10 @@
 html {font-family: sans-serif;}
 body { margin: 0;}
+input:-webkit-autofill, input:autofill, input:-internal-autofill-selected, input[type="text"] {
+    appearance: none !important;
+    background-color: transparent !important;
+    color: black !important;
+}
 
 .flash{ text-align: center;}
 .error { color : red }
