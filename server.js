@@ -30,8 +30,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(session({
   name: "simple",
   secret: "simple",
-  resave: false,
+  resave: true,
   saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl:"mongodb://localhost:27017/counter" }),
+  cookie : { maxAge : 180 * 60 * 1000 } // on détermine la durée de vie de la session
 }));
 app.use((req, res, next) => {
   app.locals.flash = req.session.flash;
