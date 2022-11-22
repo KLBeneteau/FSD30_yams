@@ -18,17 +18,17 @@ export default async function home(req, res) {
     let totalGain = 0
     for(let c of count){
         if(c == 4){
-            req.session.flash = { type :'success', message:`Bravo vous avez gagnez 2 pattiserie !`}
+            req.session.flash = { type :'success', message:`Bravo vous avez gagnez 2 pattiserie !`, vue : false }
             totalGain += 2
         }
         if(c == 5){
-            req.session.flash = { type :'success', message:`JACKPOT vous avez gagnez 3 pattiserie !`}
+            req.session.flash = { type :'success', message:`JACKPOT vous avez gagnez 3 pattiserie !`, vue : false}
             totalGain += 3
         }
         if(c == 2) double++
     }
     if(double == 2){
-        req.session.flash = { type :'success', message:`Géniale vous avez gagnez une pattiserie !`}
+        req.session.flash = { type :'success', message:`Géniale vous avez gagnez une pattiserie !`, vue : false}
         totalGain++
     }
 

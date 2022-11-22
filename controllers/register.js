@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 async function post(req, res) {
 
     if(req.body.password != req.body.confirm_password){
-        req.session.flash = { type :'error', message:`mot de passe et confirmation non identique`}
+        req.session.flash = { type :'error', message:`mot de passe et confirmation non identique`, vue : false}
         res.redirect("/login/register");
     }
         
@@ -12,7 +12,7 @@ async function post(req, res) {
         const user = await UserModel.findOne({email:req.body.email})
 
         if(user) {
-            req.session.flash = { type :'error', message:`email déja utilisé !`}
+            req.session.flash = { type :'error', message:`email déja utilisé !`, vue : false}
             res.redirect("/login/register");
         } else {
 
@@ -23,7 +23,7 @@ async function post(req, res) {
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
                 })
-                req.session.flash = { type :'success', message:`Compte créer avec succès !`}
+                req.session.flash = { type :'success', message:`Compte créer avec succès !`, vue : false}
                 res.redirect("/login");
             }
             catch (err) {
