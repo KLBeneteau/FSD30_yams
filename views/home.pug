@@ -1,4 +1,23 @@
 extends layouts/frontend
 
 block content
-    h1 Bienvenue
+    h1 Jeu Concours ! 
+    h2 Il reste #{nbrRestant} patisseries à gagner
+    if !user.aJouer
+        a(href="/jouer").boutonBB2.vertBB Participer
+    else 
+        if(user.tirage)
+            p.numero= user.tirage.reduce((str, tirage) => str + (tirage+1) + " ", "")
+        .listGagnant
+            each gain in gains 
+                .gagnant 
+                    img(src="/image/petit-gateau.png")
+                    p
+                        bold= patisseries.find(p => p._id.equals(gain.patisserieId)).name
+                        span  gagner par 
+                        bold= users.find(u => u._id.equals(gain.userId)).firstName + " " + users.find(u => u._id.equals(gain.userId)).lastName
+                        span= "le "+gain.date.toLocaleDateString("fr")
+
+block button
+    form(method="post", action="/logout/")
+        button(type="submit") Deconexion

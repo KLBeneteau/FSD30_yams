@@ -1,2 +1,119 @@
-html {font-family: sans-serif;}
-body { margin: 0;}
+@import url('https://fonts.googleapis.com/css?family=Imperial+Script&display=swap');
+body { 
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(/image/fond-bonbon.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color : #7F332D;
+    font-family: 'Imperial Script';
+    font-size: xx-large;
+}
+.flash{ text-align: center; margin-top: 0.5em;}
+.error { color : red }
+.success { color : rgb(53, 207, 53)}
+h1,h2,p { font-weight: 400; margin: 0;}
+bold { font-weight : bold }
+a, button { 
+    text-decoration: none; 
+    color: #7F332D;
+    cursor: pointer; 
+    font-family: 'Imperial Script';
+    font-size: xx-large;
+    border: none;
+}
+
+.fond, .flux, .form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fond {
+    background-color:#FFFFFFD9 ;
+    border-radius: 30px;
+    padding: 1em 2em;
+    height: fit-content;
+    width: fit-content;
+    margin: 15% auto;
+    justify-content: center;
+}
+
+.flux { 
+    gap: 30px;
+}
+.inputLigne {
+    display: flex;
+    gap:30px
+}
+
+.inputLigne .inputBonbon {
+    padding: 1em 0.5em;
+    width: 80%;
+}
+
+.inputBonbon {
+    padding: 1em 3em;
+    border-radius: 15px;
+    border: none;
+}
+.rougeBB{background-color: #fe9dc0}
+.vertBB{background-color: #a4e6c2}
+.jauneBB{background-color: #ffe26a}
+.orangeBB{background-color: #fac176}
+.cremeBB{background-color: #ffd796}
+
+.boutonBB {
+    background-color: #f9eab0;
+    border: none;
+    border-radius: 15px;
+    padding: 0.1em 0.5em;
+    font-size: xx-large;
+    font-family: 'Imperial Script';
+    cursor: pointer;
+    box-shadow: 0px 3px 3px #b3b3b3;
+}
+.boutonBB2 {
+    padding: 0.2em 2em;
+    border-radius: 15px;
+    border: none;
+    margin: 2em;
+}
+
+.numero { 
+    color: #fe9dc0; 
+    margin: 0.5em; 
+    font-size: xxx-large;
+}
+
+.listGagnant {
+    margin-top: 1em;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.gagnant { 
+    display: flex;
+    align-items: center;
+}
+.gagnant img {
+    height : 60px;
+    width: 60px;
+}
+
+.header {
+    position: absolute;
+    right: 0;
+    top : 30px
+}
+.header a,.header button {
+    background-color:#FFFFFFD9 ;
+    padding: 0.1em 2em;
+    margin: 0.5em 1em;
+    border-radius: 15px;
+    box-shadow: 0px 3px 3px #808080;
+}
+

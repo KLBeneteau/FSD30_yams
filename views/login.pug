@@ -1,0 +1,16 @@
+extends layouts/frontend
+
+block content
+    form(method="post", action="/login/").flux
+        h1 Connexion
+        .form-input
+            label(for='email') Adresse email
+            input(type='email', name='email', required).inputBonbon.rougeBB
+        .form-input
+            label(for='password') Mot de passe
+            input(type='password', name='password', required).inputBonbon.vertBB
+        button(type="submit").boutonBB Se connecter
+
+block button
+    a(href='/login/register') S'inscrire
+            

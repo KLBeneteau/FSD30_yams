@@ -1,0 +1,26 @@
+extends layouts/frontend
+
+block content
+    form(method="post", action="/login/register/").flux
+        h1 Inscription
+        .inputLigne
+            .form-input
+                label(for='lastName') Nom
+                input(type='text', name='lastName', required).inputBonbon.jauneBB
+            .form-input
+                label(for='firstName') Prenom
+                input(type='text', name='firstName', required).inputBonbon.orangeBB
+        .form-input
+            label(for='email') Adresse mail
+            input(type='email', name='email', required).inputBonbon.rougeBB
+        .form-input
+            label(for='password') Mot de passe
+            input(type='password', name='password', required).inputBonbon.vertBB
+        .form-input
+            label(for='confirm_password') Confirmation
+            input(type='password', name='confirm_password', required).inputBonbon.cremeBB
+        button(type="submit").boutonBB S'inscrire
+            
+
+block button 
+    a(href='/login') Se connecter

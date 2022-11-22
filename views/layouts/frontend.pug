@@ -8,6 +8,12 @@ html(lang="fr")
         block styles
             link(rel="stylesheet", href="/css/styles.css")
     body
-        header 
-        block content
-        footer
+        header.header 
+            block button
+
+        .fond
+            block content
+            if flash
+                p(class=flash.type).flash #{flash.message}
+
+        

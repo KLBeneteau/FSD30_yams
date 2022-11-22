@@ -36,6 +36,7 @@ app.use(session({
   cookie : { maxAge : 180 * 60 * 1000 } // on détermine la durée de vie de la session
 }));
 app.use((req, res, next) => {
+  app.locals.flash = req.session.flash;
   app.locals.user = req.session.user;
   app.locals.imgPath = `http://${APP_HOSTNAME}:${APP_PORT}/image`
   next();
