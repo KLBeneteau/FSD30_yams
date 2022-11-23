@@ -13,7 +13,7 @@ import router from "./routes/router.js";
 // ==========
 
 dotenv.config();
-const { APP_HOSTNAME, APP_PORT, NODE_ENV, MONGO_PORT, SECRET } = process.env;
+const { APP_HOSTNAME, APP_PORT, NODE_ENV, MONGO_PORT, MONGO_DB, MONGO_HOST, SECRET } = process.env;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(session({
   secret: SECRET,
   resave: true,
   saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl:`mongodb://${APP_HOSTNAME}:${MONGO_PORT}/counter` }),
+  store: MongoStore.create({ mongoUrl:`mongodb://${APP_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}` }),
   cookie : { maxAge : 180 * 60 * 1000 } // on détermine la durée de vie de la session
 }));
 app.use((req, res, next) => {
@@ -58,7 +58,7 @@ app.use(router);
 // ==========
 
 // 1. Connexion à la base de données
-mongoose.connect(`mongodb://${APP_HOSTNAME}:${MONGO_PORT}/tests`)
+mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`)
         .then(init);
 
 // 2. Démarrage de l'application Express

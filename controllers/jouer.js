@@ -32,6 +32,8 @@ export default async function home(req, res) {
         totalGain++
     }
 
+    if( totalGain == 0)  req.session.flash = { type :'error', message:`Perdu :( `, vue : false}
+
     //let USER_ID = mongoose.Types.ObjectId(req.session.user._id)
     let USER_ID = req.session.user._id
     for(let i=0; i<totalGain; i++)

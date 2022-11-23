@@ -1,7 +1,6 @@
 import { nbrPattiserie } from "../utils/utils.js";
 import GainsModel from "../Models/Gain.js";
 import PattiseriesModel from "../Models/Pattiseries.js";
-import UserModel from "../Models/User.js";
 
 export default async function home(req, res) {
 
@@ -10,16 +9,23 @@ export default async function home(req, res) {
   //req.session.user.aJouer = false ;
   //await GainsModel.remove({});await PattiseriesModel.updateMany({},{number:10})
 
-  let users = await UserModel.find({})
-  let gains = await GainsModel.find({})
-  let patisseries = await PattiseriesModel.find({})
-
-  //console.log(req.session.user)
+  let gains = await GainsModel.aggregate([
+    { $lookup : {
+      from: 'users',
+      localField: 'userId',
+      foreignField: '_id',
+      as: 'user'
+    } },
+    { $lookup : {
+      from: 'pattiseries',
+      localField: 'patisserieId',
+      foreignField: '_id',
+      as: 'pattiserie'
+    } }
+  ])
 
   res.render("home", {
     nbrRestant : await nbrPattiserie(),
-    gains:gains,
-    patisseries:patisseries,
-    users : users
+    gains:gains
   });
 }

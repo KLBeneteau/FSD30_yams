@@ -1,22 +1,21 @@
 import UserModel from "../Models/User.js"
 import bcrypt from "bcrypt"
+import e from "express";
 
 async function post(req, res) {
 
     if(req.body.password != req.body.confirm_password){
         req.session.flash = { type :'error', message:`mot de passe et confirmation non identique`, vue : false}
         res.redirect("/login/register");
-    }
-        
-    try {
+    } 
+    else try {
         const user = await UserModel.findOne({email:req.body.email})
 
         if(user) {
             req.session.flash = { type :'error', message:`email déja utilisé !`, vue : false}
             res.redirect("/login/register");
-        } else {
-
-            try {
+        } 
+        else try {
                 await UserModel.create({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
@@ -30,9 +29,8 @@ async function post(req, res) {
                 res.status(500).send(`Erreur interne : ${err.message}`);
             }
 
-        }
+        
     } catch (err) {}
-
 }
 
 function get(req, res) {
